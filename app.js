@@ -2,7 +2,10 @@ const express = require("express");
 const app = express();
 const postsRoutes = require("./api/posts/posts.routes");
 const authorRoutes = require("./api/authors/authors.routes");
+const dotEnv = require("dotenv");
 const connectDb = require("./database");
+
+dotEnv.config();
 
 connectDb();
 app.use(express.json());
@@ -20,6 +23,6 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(8000, () => {
+app.listen(process.env.PORT, () => {
   console.log("The application is running on localhost:8000");
 });

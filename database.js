@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
+const dotEnv = require("dotenv");
+dotEnv.config();
 
 const connectDB = async () => {
-  const conn = await mongoose.connect(
-    "mongodb+srv://HAlGhanim:Hag501@task-express-m2-nosql-b.dcfwm1f.mongodb.net/"
-  );
+  const conn = await mongoose.connect(process.env.MONGO_DB_URL);
   console.log(`mongo connected: ${conn.connection.host}`);
 };
 
